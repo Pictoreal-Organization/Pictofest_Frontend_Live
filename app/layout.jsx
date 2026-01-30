@@ -6,6 +6,8 @@ import { AuthProvider } from "@/app/context/Auth";
 import Navbar from "@/app/components/Navbar";
 import { siteConfig } from './config/metadata';
 import GlobalPreloader from "@/app/components/GlobalPreloader";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,6 +48,8 @@ export default function RootLayout({ children }) {
             pauseWhenPageIsHidden
             visibleToasts={1}
           />
+          <Analytics />
+          <SpeedInsights />
         </ClientProviders>
       </body>
     </html>
