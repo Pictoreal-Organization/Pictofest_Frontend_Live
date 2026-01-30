@@ -47,6 +47,9 @@ const Payment = () => {
   }, []);
 
   useEffect(() => {
+    // Add this check - only create QR if amount is loaded
+    if (amount.total_amount === 0) return;
+
     if (!qrCode.current) {
       qrCode.current = new QRCodeStyling({
         width: 150,
@@ -72,6 +75,11 @@ const Payment = () => {
           type: "dot",
           color: "#6b3e1e",
         },
+      });
+    } else {
+      // Update the QR code data when amount changes
+      qrCode.current.update({
+        data: `upi://pay?pa=Vyapar.173204546635@hdfcbank&pn=Default&mc=8999&tr=STQU173204546635&am=${amount.total_amount}&tn=PICTOFEST&cu=INR`,
       });
     }
   
