@@ -28,13 +28,18 @@ const EventCard = ({ data, index }) => {
   //   }
   // };
 
+  const handleEarlyBirdClick = () => {
+    toast.info("Early Bird offer — please ask at the desk");
+  };
+
+
   const handleAddToCart = async () => {
     // Navigate to individual page if event_code is "PH"
     if (data?.event_code === "PH") {
       router.push(`/individual/${data.id}#bottom`);
       return;
     }
-  
+
     try {
       const response = await api.post(`/cart/`, { event_id: data.id });
       toast.success(response.data.message);
@@ -70,6 +75,15 @@ const EventCard = ({ data, index }) => {
 
   const isCustomLogo = !!data?.logo_link;
 
+  const isEarlyBird =
+    data?.event_code === "PCF" ||
+    data?.event_code === "LRP" ||
+    data?.event_code === "PCFI";
+
+  const originalPrice = data?.price; // REAL price → cart
+  const displayDiscountedPrice = originalPrice ? originalPrice - 50 : 0; // UI only
+
+
   return (
     <>
       {/* Desktop Version */}
@@ -91,7 +105,7 @@ const EventCard = ({ data, index }) => {
           <div className="absolute -top-3 -right-3 z-20 ">
             <div className="relative">
               {/* Starburst Badge */}
-              <div className="relative bg-gradient-to-br from-yellow-400 via-amber-500 to-orange-600 rounded-full p-0.5 shadow-xl transform hover:scale-110 transition-transform duration-300">
+              <div className="relative bg-gradient-to-br from-yellow-400 via-amber-500 to-orange-600 rounded-full p-0.5 shadow-xl transform hover:scale-110 transition-transform duration-300" onClick={handleEarlyBirdClick}>
                 <div className="bg-gradient-to-br from-red-500 to-pink-600 rounded-full px-4 py-2.5 flex flex-col items-center justify-center min-w-[100px]">
                   <div className="text-white font-bold text-[11px] uppercase tracking-wider leading-tight text-center drop-shadow-lg">
                     Early Bird
@@ -125,15 +139,27 @@ const EventCard = ({ data, index }) => {
             ? "-left-[2%]"
             : "-right-[1.3%]"
             }`}>
-            <div className="sub-heading-font text-[#F6EDC8] text-sm md:text-sm lg:text-base mb-1">
+            {/* PRICE (unchanged from original) */}
+            <div className="sub-heading-font text-[#F6EDC8] text-sm md:text-sm lg:text-base mb-1 select-none">
               PRICE
             </div>
-            <div className="sub-heading-font text-[#FBCC12] text-xl md:text-2xl lg:text-2xl">
-              {data.name === "Texture Art + Neon fluid painting"
-                ? `Rs. ${data.price}/- (DUO)`
-                : data.price
-                  ? `Rs. ${data.price}/-`
-                  : "Free"}
+
+            {/* PRICE VALUE (with Early Bird logic) */}
+            <div className="sub-heading-font text-[#FBCC12] text-xl md:text-2xl lg:text-2xl flex items-center justify-center gap-2">
+              {isEarlyBird && originalPrice ? (
+                <>
+                  <span className="text-[#F6EDC8] line-through opacity-100 text-base md:text-lg select-none">
+                    Rs. {originalPrice}/-
+                  </span>
+                  <span className="text-[#FBCC12] font-bold select-none">
+                    Rs. {displayDiscountedPrice}/-
+                  </span>
+                </>
+              ) : (
+                <>
+                  {originalPrice ? `Rs. ${originalPrice}/-` : "Free"}
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -206,7 +232,7 @@ const EventCard = ({ data, index }) => {
           <div className="absolute -top-3 -right-1 z-20 ">
             <div className="relative">
               {/* Compact Badge for Mobile */}
-              <div className="relative bg-gradient-to-br from-yellow-400 via-amber-500 to-orange-600 rounded-full p-0.5 shadow-lg transform hover:scale-110 transition-transform duration-300">
+              <div className="relative bg-gradient-to-br from-yellow-400 via-amber-500 to-orange-600 rounded-full p-0.5 shadow-lg transform hover:scale-110 transition-transform duration-300" onClick={handleEarlyBirdClick}>
                 <div className="bg-gradient-to-br from-red-500 to-pink-600 rounded-full px-2.5 py-1.5 flex flex-col items-center justify-center min-w-[70px]">
                   <div className="text-white font-bold text-[8px] uppercase tracking-wider leading-tight text-center drop-shadow-md">
                     Early Bird
@@ -242,15 +268,27 @@ const EventCard = ({ data, index }) => {
             ? "left-[3.2%]"
             : "right-[3.9%]"
             }`}>
-            <div className="sub-heading-font uppercase text-[#F6EDC8] text-[11px] sm:text-[12px] mb-1">
+            {/* Price label (original style) */}
+            <div className="sub-heading-font uppercase text-[#F6EDC8] text-[11px] sm:text-[12px] mb-1 select-none">
               Price
             </div>
-            <div className="sub-heading-font text-[#FBCC12] text-[15px] xs:text-[15px] sm:text-[16px]">
-              {data.name === "Texture Art + Neon fluid painting"
-                ? `Rs. ${data.price}/- (DUO)`
-                : data.price
-                  ? `Rs. ${data.price}/-`
-                  : "Free"}
+
+            {/* Price value */}
+            <div className="sub-heading-font text-[#FBCC12] text-[15px] xs:text-[15px] sm:text-[16px] flex items-center justify-center gap-1.5">
+              {isEarlyBird && originalPrice ? (
+                <>
+                  <span className="text-[#F6EDC8] line-through opacity-100 text-[12px] sm:text-[13px] select-none">
+                    Rs. {originalPrice}/-
+                  </span>
+                  <span className="text-[#FBCC12] font-bold select-none">
+                    Rs. {displayDiscountedPrice}/-
+                  </span>
+                </>
+              ) : (
+                <>
+                  {originalPrice ? `Rs. ${originalPrice}/-` : "Free"}
+                </>
+              )}
             </div>
           </div>
         </div>

@@ -403,6 +403,9 @@ const Cart = () => {
             </div>
 
             <div className="w-full border-t-2 border-dotted border-[#1f4e3d]/40 my-6"></div>
+            <p className="text-[11px] text-red-600 mb-1 select-none">
+              *Avail Early Bird offers at desk
+            </p>
 
             <div className="flex gap-2 mb-3">
               <input
