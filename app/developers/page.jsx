@@ -57,6 +57,12 @@ const Team = () => {
       linkedin: "https://www.linkedin.com/in/sumedh-supe-b44835382?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app/",
     },
     {
+      name: "Shrawani Choukone",
+      imgSrc: "/img/developer/shrawani.jpg",
+      github: "https://github.com/shrawani1364",
+      linkedin:"https://www.linkedin.com/in/shrawani-choukone-6565313a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+    {
       name: "Manas Gawali",
       imgSrc: "/img/developer/ManasGawali.jpg",
       github: "https://github.com/ManasGawali",
