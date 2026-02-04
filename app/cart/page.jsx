@@ -403,36 +403,41 @@ const Cart = () => {
             </div>
 
             <div className="w-full border-t-2 border-dotted border-[#1f4e3d]/40 my-6"></div>
-            <p className="text-[11px] text-red-600 mb-1 select-none">
-              *Avail Early Bird offers at desk
-            </p>
 
-            <div className="flex gap-2 mb-3">
-              <input
-                value={earlyCode}
-                onChange={(e) => setEarlyCode(e.target.value)}
-                placeholder={applied ? "" : "Early Bird Code"}
-                readOnly={applied}
-                className={`border px-3 py-2 rounded-md w-full ${applied ? "bg-gray-100 text-gray-600 cursor-not-allowed" : ""
-                  }`}
-              />
+            {canApplyEarlyBird && (
+            <>
+              <p className="text-[11px] text-red-600 mb-1 select-none">
+                *Avail Early Bird offers at desk
+              </p>
+              <div className="flex gap-2 mb-3">
+                <input
+                  value={earlyCode}
+                  onChange={(e) => setEarlyCode(e.target.value)}
+                  placeholder={applied ? "" : "Early Bird Code"}
+                  readOnly={applied}
+                  className={`border px-3 py-2 rounded-md w-full ${applied ? "bg-gray-100 text-gray-600 cursor-not-allowed" : ""
+                    }`}
+                />
 
-              <button
-                disabled={!canApplyEarlyBird || applied}
-                onClick={() => getAmount(earlyCode, cart)}
-                className={`px-4 rounded-md text-white ${!canApplyEarlyBird || applied
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-green-600 hover:bg-green-700"
-                  }`}
-              >
-                {applied ? "Applied" : "Apply"}
-              </button>
+                <button
+                  disabled={!canApplyEarlyBird || applied}
+                  onClick={() => getAmount(earlyCode, cart)}
+                  className={`px-4 rounded-md text-white ${!canApplyEarlyBird || applied
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-green-600 hover:bg-green-700"
+                    }`}
+                >
+                  {applied ? "Applied" : "Apply"}
+                </button>
+              </div>
+            </>
+            )}
 
-
-            </div>
-            {applied && amount.discounted_event_codes.length > 0 && (
+            {canApplyEarlyBird && applied && amount.discounted_event_codes.length > 0 && (
               <p className="text-green-700 text-sm">Early Bird applied</p>
             )}
+            
+
             <div className="text-center mb-4">
               <h2 className="body-font text-2xl md:text-3xl font-extrabold text-[#1a1a1a]">
                 Total : Rs. {amount.total_amount}
