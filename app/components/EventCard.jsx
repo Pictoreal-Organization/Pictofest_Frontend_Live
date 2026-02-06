@@ -29,7 +29,7 @@ const EventCard = ({ data, index }) => {
   // };
 
   const handleEarlyBirdClick = () => {
-    toast.info("Early Bird offer — please ask at the desk");
+    toast.info("Early Bird offer - special discount available");
   };
 
 
