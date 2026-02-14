@@ -172,7 +172,7 @@ const EventCard = ({ data, index }) => {
         <div className="relative z-10 w-full h-full">
           <div
             className={`flex gap-3 md:gap-4 lg:gap-5 absolute -top-[130%] ${isClosed
-                ? "left-0 right-0 justify-center"
+                ? "left-[9%] right-[9%] justify-center"
                 : isOddIndex
                   ? "left-[9%]"
                   : "right-[9%]"
