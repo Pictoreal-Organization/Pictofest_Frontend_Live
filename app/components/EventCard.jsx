@@ -186,7 +186,7 @@ const EventCard = ({ data, index }) => {
                 <div className="absolute inset-0 z-10 flex items-center justify-center">
                   <span className="text-white sub-heading-font flex items-center justify-center gap-0.5 md:gap-1 text-xs md:text-sm lg:text-base whitespace-nowrap">
                     {isClosed ? (
-                      <span className="text-red-500 text-xs md:text-xs lg:text-xs">
+                      <span className="text-red-800 text-xs md:text-xs lg:text-xs">
                         Closed
                       </span>
                     ) :
@@ -318,7 +318,11 @@ const EventCard = ({ data, index }) => {
                 />
                 <div className="absolute inset-0 z-10 flex items-center justify-center">
                   <span className="text-white sub-heading-font flex items-center justify-center gap-0.5 text-[9px] sm:text-[10px] whitespace-nowrap">
-                    {data?.price ? (
+                    {isClosed ? (
+                      <span className="text-red-800 text-[8px] sm:text-[10px]">
+                        Closed
+                      </span>
+                    ) : data?.price ? (
                       <FaCartShopping className="text-white text-[8px] sm:text-[10px]" />
                     ) : (
                       "Register"
