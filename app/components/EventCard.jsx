@@ -11,6 +11,8 @@ const EventCard = ({ data, index }) => {
 
   const router = useRouter();
 
+  const isClosed = data?.is_active === false;
+
   const handleReadMore = () => {
     router.push(`/individual/${data.id}`);
   };
@@ -183,11 +185,17 @@ const EventCard = ({ data, index }) => {
                 />
                 <div className="absolute inset-0 z-10 flex items-center justify-center">
                   <span className="text-white sub-heading-font flex items-center justify-center gap-0.5 md:gap-1 text-xs md:text-sm lg:text-base whitespace-nowrap">
-                    {data?.price ? (
-                      <FaCartShopping className="text-white text-xs md:text-sm lg:text-base" />
-                    ) : (
-                      <span className="text-xs md:text-xs lg:text-xs">Register</span>
-                    )}
+                    {isClosed ? (
+                      <span className="text-red-500 sub-heading-font text-xs">
+                        Registrations Closed
+                      </span>
+                    ) :
+                      data?.price ? (
+                        <FaCartShopping className="text-white text-xs md:text-sm lg:text-base" />
+                      ) : (
+                        <span className="text-xs md:text-xs lg:text-xs">Register</span>
+                      )}
+
                   </span>
                 </div>
               </div>
