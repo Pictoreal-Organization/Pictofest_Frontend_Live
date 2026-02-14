@@ -170,10 +170,16 @@ const EventCard = ({ data, index }) => {
 
         {/* Buttons*/}
         <div className="relative z-10 w-full h-full">
-          <div className={`flex gap-3 md:gap-4 lg:gap-5 absolute -top-[130%] ${isOddIndex ? "left-[9%]" : "right-[9%]"
-            } ${isClosed ? "justify-center w-full" : ""}`}>
+          <div
+            className={`flex gap-3 md:gap-4 lg:gap-5 absolute -top-[130%] ${isClosed
+                ? "left-0 right-0 justify-center"
+                : isOddIndex
+                  ? "left-[9%]"
+                  : "right-[9%]"
+              }`}
+          >
             {/* Add to Cart / Register Button */}
-            {!isClosed &&(
+            {!isClosed && (
               <div className="relative group cursor-pointer flex-shrink-0" onClick={handleAddToCart}>
                 <div className="relative w-[70px] md:w-[80px] lg:w-[90px] h-[26px] md:h-[30px] lg:h-[34px]">
                   <Image
