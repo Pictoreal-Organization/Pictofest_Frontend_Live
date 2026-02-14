@@ -173,27 +173,26 @@ const EventCard = ({ data, index }) => {
           <div className={`flex gap-3 md:gap-4 lg:gap-5 absolute -top-[130%] ${isOddIndex ? "left-[9%]" : "right-[9%]"
             } ${isClosed ? "justify-center w-full" : ""}`}>
             {/* Add to Cart / Register Button */}
-            (!isClosed &&{
-              <div className="relative group cursor-pointer flex-shrink-0" onClick={handleAddToCart}>
-                <div className="relative w-[70px] md:w-[80px] lg:w-[90px] h-[26px] md:h-[30px] lg:h-[34px]">
-                  <Image
-                    src={buttonImage}
-                    alt="Add to Cart Button"
-                    fill
-                    className="object-contain group-hover:opacity-90 transition-opacity"
-                  />
-                  <div className="absolute inset-0 z-10 flex items-center justify-center">
-                    <span className="text-white sub-heading-font flex items-center justify-center gap-0.5 md:gap-1 text-xs md:text-sm lg:text-base whitespace-nowrap">
-                      {data?.price ? (
-                        <FaCartShopping className="text-white text-xs md:text-sm lg:text-base" />
-                      ) : (
-                        <span className="text-xs md:text-xs lg:text-xs">Register</span>
-                      )}
-                    </span>
-                  </div>
+            
+            <div className="relative group cursor-pointer flex-shrink-0" onClick={handleAddToCart}>
+              <div className="relative w-[70px] md:w-[80px] lg:w-[90px] h-[26px] md:h-[30px] lg:h-[34px]">
+                <Image
+                  src={buttonImage}
+                  alt="Add to Cart Button"
+                  fill
+                  className="object-contain group-hover:opacity-90 transition-opacity"
+                />
+                <div className="absolute inset-0 z-10 flex items-center justify-center">
+                  <span className="text-white sub-heading-font flex items-center justify-center gap-0.5 md:gap-1 text-xs md:text-sm lg:text-base whitespace-nowrap">
+                    {data?.price ? (
+                      <FaCartShopping className="text-white text-xs md:text-sm lg:text-base" />
+                    ) : (
+                      <span className="text-xs md:text-xs lg:text-xs">Register</span>
+                    )}
+                  </span>
                 </div>
               </div>
-            })
+            </div>
 
             {/* Read More Button */}
             <div className="relative group cursor-pointer flex-shrink-0" onClick={handleReadMore}>
