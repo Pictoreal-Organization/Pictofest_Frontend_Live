@@ -421,7 +421,7 @@ const Payment = () => {
     // Calculate non-combo items
     nonComboItems.forEach(item => {
       const hasPhotocopy = item.photocopy_needed === true;
-      const baseUnitPrice = hasPhotocopy ? item.price + 10 : item.price;
+      const baseUnitPrice = item.price;  // Remove the photocopy from here
       const baseTotalPrice = baseUnitPrice * (item.quantity || 1);
       
       // Apply discount if eligible

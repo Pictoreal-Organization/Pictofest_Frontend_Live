@@ -999,8 +999,8 @@ const Cart = () => {
     
     // Calculate non-combo items
     nonComboItems.forEach(item => {
-      const hasPhotocopy = item.photocopy_needed === true;
-      const baseUnitPrice = hasPhotocopy ? item.price + 10 : item.price;
+      // ✅ FIX: Don't add photocopy to base price
+      const baseUnitPrice = item.price;  // ← Changed this line
       const baseTotalPrice = baseUnitPrice * (item.quantity || 1);
       
       // Apply discount if eligible
@@ -1013,6 +1013,7 @@ const Cart = () => {
         event_amount += baseTotalPrice;
       }
       
+      // ✅ Photocopy is tracked separately
       if (item.photocopy_needed) {
         photocopy_charges += 10 * (item.quantity || 1);
       }
@@ -1291,7 +1292,8 @@ const Cart = () => {
                         const hasPhotocopy = item.photocopy_needed === true;
                         const isEarlyBirdDiscounted = amount.discounted_event_codes?.includes(item.event_code);
                         
-                        const baseUnitPrice = hasPhotocopy ? item.price + 10 : item.price;
+                        // const baseUnitPrice = hasPhotocopy ? item.price + 10 : item.price;
+                        const baseUnitPrice = item.price;  // ← Changed this line
                         const baseTotalPrice = baseUnitPrice * (item.quantity || 1);
 
                         // Only show promo discount on NON-COMBO items
