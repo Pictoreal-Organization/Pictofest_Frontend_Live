@@ -24,12 +24,12 @@ const Home = () => {
     }
 
     // -------------------- early bird part --------------------
-    // const handleScroll = () => {
-    //   // Hide the badge after scrolling 50px
-    //   setIsScrolled(window.scrollY > 50);
-    // };
-    // window.addEventListener("scroll", handleScroll);
-    // return () => window.removeEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      // Hide the badge after scrolling 50px
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // -------------------- early bird part --------------------
