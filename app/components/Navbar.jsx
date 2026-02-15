@@ -382,6 +382,7 @@ const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const SHOW_SPONSORS = false;
+  const SHOW_COMBOS = true;
 
   const { authState, isUserAuthenticated, setUserAuthInfo } = useAuth();
   const pathname = usePathname();
@@ -487,6 +488,14 @@ const Navbar = () => {
         className="w-40"
         onClick={handleNavLinkClick}
       />
+      {SHOW_COMBOS && (
+        <NavLink
+          href="/combos"
+          text="Combos"
+          className="w-40"
+          onClick={handleNavLinkClick}
+        />
+      )}
       {SHOW_SPONSORS && (
         <NavLink
           href="/sponsors"
@@ -554,6 +563,7 @@ const Navbar = () => {
             <NavLink href="/picsoreel" text="Pics-o-Reel" />
             <NavLink href="/workshops" text="Workshops" />
             <NavLink href="/events" text="Events" />
+            {SHOW_COMBOS && <NavLink href="/combos" text="Combos" />}
             {SHOW_SPONSORS && <NavLink href="/sponsors" text="Sponsors" />}
             <NavLink href="/cart" text="Cart" />
             {renderAuthButton()}

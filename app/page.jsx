@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 const Home = () => {
   const router = useRouter();
   // -------------------- early bird part --------------------
-  // const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
     const CURRENT_DB_VERSION = "2.0";
     const storedVersion = localStorage.getItem("dbVersion");
@@ -33,9 +33,9 @@ const Home = () => {
   }, []);
 
   // -------------------- early bird part --------------------
-  // const handleEarlyBirdClick = () => {
-  //   router.push("/workshops");
-  // };
+  const handleEarlyBirdClick = () => {
+    router.push("/combos");
+  };
 
   return (
     <motion.main
@@ -83,7 +83,7 @@ const Home = () => {
           {/* Desktop: Top Right of Logo */}
 
           {/* // -------------------- early bird part -------------------- */}
-          {/* <motion.div
+          <motion.div
             className="hidden md:block absolute -right-20 -top-12 z-30"
             initial={{ scale: 0, rotate: 15 }}
             animate={{ scale: 1, rotate: -10 }}
@@ -94,17 +94,17 @@ const Home = () => {
               <div className="absolute inset-0 bg-yellow-400 rounded-full blur-md opacity-40 animate-pulse"></div>
               <div className="relative bg-gradient-to-br from-yellow-400 via-amber-500 to-orange-600 rounded-full p-1 shadow-2xl">
                 <div className="bg-gradient-to-br from-red-500 to-pink-600 rounded-full px-6 py-5 flex flex-col items-center justify-center min-w-[130px] border-2 border-yellow-200/20">
-                  <span className="text-white font-bold text-[11px] uppercase tracking-widest leading-none drop-shadow-md">Early Bird</span>
+                  <span className="text-white font-bold text-[11px] uppercase tracking-widest leading-none drop-shadow-md">Combo</span>
                   <span className="text-yellow-300 font-black text-2xl uppercase italic leading-none mt-1 drop-shadow-lg">OFFER!</span>
                 </div>
               </div>
             </div>
-          </motion.div> */}
+          </motion.div> 
 
           {/* Mobile: Floating Bottom Left (Avoiding Hamburger & Ribbon) */}
           
           {/* // -------------------- early bird part -------------------- */}
-          {/* <motion.div
+          <motion.div
             className="md:hidden fixed bottom-50 left-4 z-[100]"
             initial={{ x: -100, opacity: 0 }}
             animate={{
@@ -122,13 +122,13 @@ const Home = () => {
 
               <div className="relative bg-gradient-to-r from-red-600 to-orange-500 rounded-full py-2 px-4 shadow-lg border border-yellow-400/50 flex items-center gap-2">
                 <div className="flex flex-col">
-                  <span className="text-white font-bold text-[8px] uppercase select-none pointer-events-none leading-none">Early Bird</span>
+                  <span className="text-white font-bold text-[8px] uppercase select-none pointer-events-none leading-none">Combo</span>
                   <span className="text-yellow-200 font-black text-[12px] uppercase select-none pointer-events-none leading-none">OFFER LIVE</span>
                 </div>
                 <div className="w-2 h-2 bg-yellow-300 rounded-full animate-ping"></div>
               </div>
             </div>
-          </motion.div> */}
+          </motion.div>
 
           {/* 1. Ribbon */}
           <div className="w-64 md:w-80 transition-transform hover:scale-105 duration-500">
