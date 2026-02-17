@@ -37,7 +37,7 @@ export const combos = [
     // },
     {
       id: 5,
-      name: "Pipe Cleaner Flower + Lotus Resin",
+      name: "Pipe cleaner flowers (Individual) + Lotus Resin",
       description: "Ultimate crafting experience",
       price: 850,
       originalPrice: 1000,
@@ -55,7 +55,7 @@ export const combos = [
     },
     {
       id: 7,
-      name: "Play with clay + Pipe Cleaner Flower",
+      name: "Play with clay + Pipe cleaner flowers (Individual)",
       description: "Ultimate crafting experience",
       price: 500,
       originalPrice: 550,
