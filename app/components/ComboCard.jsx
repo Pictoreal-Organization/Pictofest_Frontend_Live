@@ -292,13 +292,15 @@ const ComboCard = ({ data, index }) => {
         </div>
 
         {/* Combo Name */}
-        <div className="relative z-10 w-full h-full">
-          <h2 className={`sub-heading-font text-[#FBF0AD] line-clamp-2 text-center absolute bottom-[67%] w-[55%] ${
-            isOddIndex ? "left-[5%]" : "right-[5%]"
-          } text-sm sm:text-base md:text-lg lg:text-xl`}>
-            {data?.name}
-          </h2>
-        </div>
+        <div className="relative z-10 w-full h-full pointer-events-none">
+        <h2 className={`sub-heading-font text-[#FBF0AD] text-center absolute w-[60%] leading-tight px-2 ${
+          isOddIndex 
+            ? "top-[20%] left-[2%]"  // Red Card
+            : "top-[12%] right-[5%]" // Green Card
+          } text-[10px] sm:text-[11px] md:text-[13px] lg:text-[17px]`}>
+          {data?.name}
+        </h2>
+      </div>
 
         {/* Price Section */}
         <div className="relative z-10 w-full h-full">
@@ -360,10 +362,12 @@ const ComboCard = ({ data, index }) => {
         </div>
 
         {/* Combo Name */}
-        <div className="relative z-10 h-full px-10">
-          <h2 className={`sub-heading-font text-[#FBF0AD] line-clamp-2 text-center absolute bottom-[67%] w-[55%] ${
-            isOddIndex ? "left-[5.5%]" : "right-[3.5%]"
-          } text-[14px] sm:text-[13px]`}>
+        <div className="relative z-10 h-full w-full pointer-events-none">
+          <h2 className={`sub-heading-font text-[#FBF0AD] text-center absolute w-[60%] leading-tight px-1 ${
+            isOddIndex 
+              ? "top-[25%] left-[3%]"  // Red Card
+              : "top-[15%] right-[3%]" // Green Card
+          } text-[12px] sm:text-[14px]`}>
             {data?.name}
           </h2>
         </div>
