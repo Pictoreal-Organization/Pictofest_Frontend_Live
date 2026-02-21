@@ -53,15 +53,15 @@ export const combos = [
     //   event_codes: ["PWC", "LRP"],
     //   logo_link: null,
     // },
-    {
-      id: 7,
-      name: "Play with clay + Pipe cleaner flowers (Individual)",
-      description: "Ultimate crafting experience",
-      price: 500,
-      originalPrice: 550,
-      event_codes: ["PWC", "PCFI"],
-      logo_link: null,
-    },
+    // {
+    //   id: 7,
+    //   name: "Play with clay + Pipe cleaner flowers (Individual)",
+    //   description: "Ultimate crafting experience",
+    //   price: 500,
+    //   originalPrice: 550,
+    //   event_codes: ["PWC", "PCFI"],
+    //   logo_link: null,
+    // },
   ];
 
   // finalized combos
