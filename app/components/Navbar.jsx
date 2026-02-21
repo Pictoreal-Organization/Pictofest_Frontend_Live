@@ -382,7 +382,7 @@ const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const SHOW_SPONSORS = false;
-  const SHOW_COMBOS = true;
+  const SHOW_COMBOS = false;
 
   const { authState, isUserAuthenticated, setUserAuthInfo } = useAuth();
   const pathname = usePathname();
