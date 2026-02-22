@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /img/
+Disallow: /_next/
+Disallow: /api/
+
+Sitemap: https://test.pictofest.in/sitemap.xml

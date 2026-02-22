@@ -4,59 +4,75 @@ import localFont from "next/font/local";
 import { useEffect } from "react";
 import Image from "next/image";
 
-const rye = localFont({
-  src: "../../public/fonts/Rye-Regular.ttf",
-});
-
 const Sponsors = () => {
-//   const sponsor = [
-//     {
-//       title: "TITLE SPONSOR",
-//       name: "Time International",
-//       imgSrc: "/img/sponsor/TIME logo.webp",
-//       webSrc: "https://www.time4education.com/",
-//     },
-//     {
-//       title: "GAME PARTNER",
-//       name: "KING OF GAME",
-//       imgSrc: "/img/sponsor/kog pune.png",
-//       webSrc: "https://www.kingofgame.in/index.html",
-//     },
-//     {
-//       title: "SNACK PARTNER",
-//       name: "GURUKRUPA BUDHANI BROS",
-//       imgSrc: "/img/sponsor/BUDHANI.png",
-//       webSrc: "https://gurukrupabudhanibrothers.com/",
-//     },
-//     {
-//       title: "FOOD PARTNER",
-//       name: "PIZZA BURST",
-//       imgSrc: "/img/sponsor/Pizza burst.png",
-//       webSrc: "https://www.instagram.com/pizza_burst_pune",
-//     },
-//     {
-//       title: "YOUTH PARTNER",
-//       name: "CAMPUS TIMES",
-//       imgSrc: "/img/sponsor/CAMPUSTIMES.jpg",
-//       webSrc: "https://www.campustimespune.com/",
-//     },
-//     {
-//       title: "YOUTH MEDIA PARTNER",
-//       name: "YOUTH INC",
-//       imgSrc: "/img/sponsor/youth inc.png",
-//     },
-//     {
-//       title: "PIZZA PARTNER",
-//       name: "PIZZA WINDOW",
-//       imgSrc: "/img/sponsor/pizza window.png",
-//       webSrc: "https://www.instagram.com/thepizzawindoww",
-//     },
-//     {
-//       title: "BLOG PARTNER",
-//       name: "EDTIMES",
-//       imgSrc: "/img/sponsor/edtimes logo.png",
-//     },
-//   ];
+  const sponsor = [
+    {
+      title: "TITLE SPONSOR",
+      name: "Time International",
+      imgSrc: "/img/sponsor/TIME logo.webp",
+      webSrc: "https://www.time4education.com/",
+    },
+    {
+      title: "CO SPONSOR",
+      name: "Dnyanadeep academy",
+      imgSrc: "/img/sponsor/co-sponsor.png",
+      webSrc: "https://www.kingofgame.in/index.html",
+    },
+    {
+      title: "SNACK PARTNER",
+      name: "GURUKRUPA BUDHANI BROS",
+      imgSrc: "/img/sponsor/snack-partner.jpg",
+      webSrc: "https://gurukrupabudhanibrothers.com/",
+    },
+    {
+      title: "FOOD PARTNER",
+      name: "PIZZA BURST",
+      imgSrc: "/img/sponsor/food-partner.jpg",
+      webSrc: "https://www.instagram.com/pizza_burst_pune",
+    },
+    {
+      title: "PIZZA PARTNER",
+      name: "PIZZA WINDOW",
+      imgSrc: "/img/sponsor/pizza-partner.png",
+      webSrc: "https://www.campustimespune.com/",
+    },
+    {
+      title: "COFFEE PARTNER",
+      name: "LA ROASTED BEANS",
+      imgSrc: "/img/sponsor/coffee-partner.png",
+      webSrc: "https://www.campustimespune.com/",
+    },
+    {
+      title: "BEVERAGE PARTNER",
+      name: "PANAAAA",
+      imgSrc: "/img/sponsor/beverage-partner.png",
+      webSrc: "https://www.instagram.com/thepizzawindoww",
+    },
+    {
+      title: "MEDIA PARTNER",
+      name: "PUNEKAR NEWS",
+      imgSrc: "/img/sponsor/media-partner.png",
+      webSrc: "https://www.campustimespune.com/",
+    },
+    {
+      title: "YOUTH PARTNER",
+      name: "CAMPUS TIMES PUNE",
+      imgSrc: "/img/sponsor/youth-partner.png",
+      webSrc: "https://www.campustimespune.com/",
+    },
+    {
+      title: "REFRESHMENT PARTNER",
+      name: "KATRAJ DAIRY",
+      imgSrc: "/img/sponsor/refreshment-partner.png",
+      webSrc: "https://www.campustimespune.com/",
+    },
+    {
+      title: "EDUCATION PARTNER",
+      name: "REGAL COMPUTERS",
+      imgSrc: "/img/sponsor/education-partner.png",
+      webSrc: "https://www.campustimespune.com/",
+    },
+  ];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -99,13 +115,13 @@ const Sponsors = () => {
         {/* TITLE */}
         <h1 className="text-4xl lg:text-5xl tracking-tight text-white heading-font 
           mt-14 sm:mt-16 lg:mt-11
-          mb-20 sm:mb-28 md:mb-40 
+          mb-20 sm:mb-20
           text-center">
           Our Sponsors
         </h1>
 
         {/* SPONSORS SECTION */}
-        <div className="flex flex-col gap-10 md:mb-20 mb-20 items-center">
+        <div className="flex flex-col gap-10 mb-20 items-center">
 
           {/* TITLE SPONSOR (Featured) */}
           {/* <div className="relative md:mb-32 mb-16">
@@ -119,16 +135,14 @@ const Sponsors = () => {
               {sponsor[0].title}
             </div>
 
-            <div className="relative"> */}
-              {/* FRAME */}
-              {/* <img
+            <div className="relative">
+              <img
                 src="/img/sponsor/frame1.png"
                 alt="Sponsor Frame"
                 className="lg:w-[500px] sm:w-[400px] w-[330px]"
-              /> */}
+              />
 
-              {/* CENTER CONTENT */}
-              {/* <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
                 <img
                   src={sponsor[0].imgSrc}
                   alt={sponsor[0].name}
@@ -144,13 +158,11 @@ const Sponsors = () => {
             </div>
           </div> */}
 
-          {/* OTHER SPONSORS GRID */}
           {/* <div className="grid md:grid-cols-2 grid-cols-1 md:gap-x-20 md:gap-y-28 gap-y-20 px-4">
             {sponsor.slice(1).map((data) => (
               <div key={data.name} className="relative">
-                {/* SPONSOR TITLE */}
-                {/* <div
-                  className={`${rye.className} text-white text-center 
+                <div
+                  className={`sub-heading-font text-white text-center 
                   text-[20px] lg:text-[28px] 
                   absolute -top-10 lg:-top-14 
                   w-full left-1/2 -translate-x-1/2 
@@ -159,32 +171,70 @@ const Sponsors = () => {
                   {data.title}
                 </div>
 
-                <div className="relative mt-5"> */}
-                  {/* FRAME */}
-                  {/* <img
+                <div className="relative ">
+                  <img
                     src="/img/sponsor/frame1.png"
                     alt="Sponsor Frame"
-                    className="lg:w-[400px] sm:w-[300px] w-[280px]"
-                  /> */}
+                    className="lg:w-100 sm:w-75 w-70"
+                  />
 
-                  {/* CENTER CONTENT */}
-                  {/* <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
                     <img
                       src={data.imgSrc}
                       alt={data.name}
-                      className="w-[120px] lg:w-[160px] cursor-pointer object-contain"
+                      className="max-w-40 lg:max-w-56 max-h-30 lg:max-h-44 cursor-pointer object-contain"
                       onClick={() =>
                         data.webSrc && window.open(data.webSrc, "_blank")
                       }
                     />
-                    <div className={`${rye.className} text-[14px] lg:text-[18px] text-center tracking-widest uppercase`}>
+                    <p className="text-center sub-heading-font font-semibold max-w-50 wrap-break-word">
                       {data.name}
-                    </div>
+                    </p>
                   </div>
                 </div>
               </div>
             ))}
           </div> */}
+
+          <div className="grid md:grid-cols-2 grid-cols-1 md:gap-x-20 md:gap-y-16 gap-y-14 px-4">
+            {sponsor.slice(1).map((data) => (
+              <div key={data.name} className="flex flex-col items-center">
+                
+                {/* TITLE - now in normal flow */}
+                <div
+                  className={`sub-heading-font text-white text-center 
+                  text-[20px] lg:text-[28px] 
+                  mb-4 lg:mb-6
+                  w-full
+                  tracking-widest uppercase drop-shadow-md`}
+                >
+                  {data.title}
+                </div>
+
+                {/* FRAME + CONTENT */}
+                <div className="relative">
+                  <img
+                    src="/img/sponsor/frame1.png"
+                    alt="Sponsor Frame"
+                    className="lg:w-100 sm:w-75 w-70"
+                  />
+
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+                    <img
+                      src={data.imgSrc}
+                      alt={data.name}
+                      className="max-w-40 lg:max-w-56 max-h-30 lg:max-h-44 cursor-pointer object-contain"
+                      onClick={() => data.webSrc && window.open(data.webSrc, "_blank")}
+                    />
+                    <p className="text-center text-md md:text-xl sub-heading-font font-semibold max-w-50 break-words">
+                      {data.name}
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+          </div>
 
         </div>
       </div>

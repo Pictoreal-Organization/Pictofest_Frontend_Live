@@ -94,8 +94,8 @@ const Home = () => {
               <div className="absolute inset-0 bg-yellow-400 rounded-full blur-md opacity-40 animate-pulse"></div>
               <div className="relative bg-gradient-to-br from-yellow-400 via-amber-500 to-orange-600 rounded-full p-1 shadow-2xl">
                 <div className="bg-gradient-to-br from-red-500 to-pink-600 rounded-full px-6 py-5 flex flex-col items-center justify-center min-w-[130px] border-2 border-yellow-200/20">
-                  <span className="text-white font-bold text-[11px] uppercase tracking-widest leading-none drop-shadow-md">VOTING STARTS</span>
-                  <span className="text-yellow-300 font-black text-2xl uppercase italic leading-none mt-1 drop-shadow-lg">23rd FEB</span>
+                  <span className="text-white font-bold text-[11px] uppercase tracking-widest leading-none drop-shadow-md">VOTING IS</span>
+                  <span className="text-yellow-300 font-black text-2xl uppercase italic leading-none mt-1 drop-shadow-lg">LIVE</span>
                 </div>
               </div>
             </div>
@@ -122,8 +122,8 @@ const Home = () => {
 
               <div className="relative bg-gradient-to-r from-red-600 to-orange-500 rounded-full py-2 px-4 shadow-lg border border-yellow-400/50 flex items-center gap-2">
                 <div className="flex flex-col">
-                  <span className="text-white font-bold text-[8px] uppercase select-none pointer-events-none leading-none">VOTING STARTS</span>
-                  <span className="text-yellow-200 font-black text-[12px] uppercase select-none pointer-events-none leading-none">23rd FEB</span>
+                  <span className="text-white font-bold text-[8px] uppercase select-none pointer-events-none leading-none">VOTING IS</span>
+                  <span className="text-yellow-200 font-black text-[12px] uppercase select-none pointer-events-none leading-none">LIVE</span>
                 </div>
                 <div className="w-2 h-2 bg-yellow-300 rounded-full animate-ping"></div>
               </div>

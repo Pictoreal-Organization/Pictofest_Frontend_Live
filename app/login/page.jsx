@@ -204,7 +204,7 @@
 //           </div>
 
 //           <div className="relative space-y-2 md:space-y-3 flex flex-col items-center w-full"> 
-  
+
 //   {/* Email Input */}
 //   <input
 //     className="
@@ -312,7 +312,7 @@
 //       />
 
 //       {/* 💀 Skeletons */}
-      
+
 //       {/* Mobile Skeleton (Group 514) */}
 //       <img
 //         src="/img/home/Group 514.svg"
@@ -363,6 +363,9 @@ import { useAuth } from "@/app/context/Auth";
 import { baseURL } from "@/app/api";
 import isAuth from "@/app/components/isAuth";
 import Turnstile from "react-turnstile";
+import { FcGoogle } from "react-icons/fc";
+import { auth, googleProvider, signInWithPopup } from "@/app/config/firebase";
+
 
 const inter = Lobster({ subsets: ["latin"], weight: "400" });
 
@@ -374,7 +377,9 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [showEye, setShowEye] = useState(false);
   const [captchaToken, setCaptchaToken] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoginLoading, setIsLoginLoading] = useState(false);
+  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+
 
   const eyeHandler = () => setShowEye(!showEye);
 
@@ -382,13 +387,18 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (!validateEmail(email)) return toast.error("Please enter a valid email.");
-    if (!password) return toast.error("Please enter your password.");
-    if (!captchaToken) return toast.error("Please complete the CAPTCHA.");
 
-    setIsLoading(true);
+    if (!validateEmail(email))
+      return toast.error("Please enter a valid email.");
 
-  
+    if (!password)
+      return toast.error("Please enter your password.");
+
+    if (!captchaToken)
+      return toast.error("Please complete the CAPTCHA.");
+
+    setIsLoginLoading(true);
+
     try {
       const response = await axios.post(`${baseURL}/user/login`, {
         email,
@@ -398,11 +408,8 @@ const Login = () => {
 
       const { token, user } = response.data.data;
 
-      // persist
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
-
-      // 🔥 IMPORTANT: update context immediately
       setUserAuthInfo({ token, user });
 
       toast.success(response.data.message);
@@ -410,10 +417,40 @@ const Login = () => {
     } catch (err) {
       toast.error(err.response?.data?.message || "Failed to login.");
     } finally {
-      setIsLoading(false);
+      setIsLoginLoading(false);
     }
-    
   };
+
+
+  const handleGoogleLogin = async () => {
+    setIsGoogleLoading(true);
+
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+
+      // 🔥 get Firebase ID token
+      const idToken = await result.user.getIdToken();
+
+      const response = await axios.post(`${baseURL}/user/google-login`, {
+        idToken,
+      });
+
+      const { token, user } = response.data.data;
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+      setUserAuthInfo({ token, user });
+
+      toast.success("Google login successful");
+      router.push("/");
+    } catch (err) {
+      console.error(err);
+      toast.error(err.response?.data?.message || "Google login failed");
+    } finally {
+      setIsGoogleLoading(false);
+    }
+  };
+
 
   // Reusable styles to match Register/Forgot Password
   const inputStyle = "w-full h-11 px-4 bg-[#E77C40] rounded-xl border-2 border-black text-white placeholder:text-white/80 focus:outline-none focus:ring-2 focus:ring-yellow-300 text-sm";
@@ -421,7 +458,7 @@ const Login = () => {
 
   return (
     <main className={`${inter.className} min-h-screen w-full relative`}>
-      
+
       {/* ============================================================
           LAYER 1: FIXED BACKGROUND (Identical to Register)
          ============================================================ */}
@@ -436,116 +473,155 @@ const Login = () => {
         {/* MUSICIANS - Fixed at Bottom */}
         <img src="/img/home/Group 512.svg" alt="Skeleton Left" className="absolute bottom-0 left-[-5%] w-[45%] h-[180px] object-contain z-20 hidden md:block" />
         <img src="/img/home/Group 513.svg" alt="Skeleton Right" className="absolute bottom-0 right-[-5%] w-[45%] h-[180px] object-contain z-20 hidden md:block" />
-       
-        </div>
+
+      </div>
 
       {/* ============================================================
           LAYER 2: SCROLLABLE CONTENT
          ============================================================ */}
-        <div className="relative z-10 w-full flex flex-col items-center pt-[100px] min-h-dvh overflow-y-auto md:h-auto md:overflow-visible md:pb-[100px] pb-16">
+      <div className="relative z-10 w-full flex flex-col items-center pt-[100px] min-h-dvh overflow-y-auto md:h-auto md:overflow-visible md:pb-[100px] pb-16">
 
-          {/* Logo */}
-          <img
-            src="/img/common/final_logo.png"
-            alt="Pictofest Logo"
-            className="w-[200px] md:w-[260px] object-contain mb-8 drop-shadow-xl"
-          />
+        {/* Logo */}
+        <img
+          src="/img/common/final_logo.png"
+          alt="Pictofest Logo"
+          className="w-[200px] md:w-[260px] object-contain mb-8 drop-shadow-xl"
+        />
 
-          {/* Form Card */}
-          <div className="w-[90%] max-w-[500px] relative">
-            
-            <div
-              className="rounded-[30px] p-8 md:p-12 relative shadow-2xl border-[5px] border-[#E77C40]"
-              style={{ 
-                  backgroundImage: "url('/img/reg_login/reg_login_card_bg.svg')",
-                  backgroundRepeat: 'repeat', 
-                  backgroundSize: '300px auto',
-                  backgroundColor: '#2e1065' 
-              }}
-            >
-              
-              {/* Heading */}
-              <div className="flex flex-col items-center mb-8">
-                <h1 className="text-4xl md:text-5xl heading-font text-white text-center drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
-                  Welcome Back
-                </h1>
+        {/* Form Card */}
+        <div className="w-[90%] max-w-[500px] relative">
+
+          <div
+            className="rounded-[30px] p-8 md:p-12 relative shadow-2xl border-[5px] border-[#E77C40]"
+            style={{
+              backgroundImage: "url('/img/reg_login/reg_login_card_bg.svg')",
+              backgroundRepeat: 'repeat',
+              backgroundSize: '300px auto',
+              backgroundColor: '#2e1065'
+            }}
+          >
+
+            {/* Heading */}
+            <div className="flex flex-col items-center mb-8">
+              <h1 className="text-4xl md:text-5xl heading-font text-white text-center drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+                Welcome Back
+              </h1>
+            </div>
+
+            {/* Inputs */}
+            <div className="body-font flex flex-col gap-5">
+
+              <input
+                className={inputStyle}
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+
+              <div className="relative">
+                <input
+                  className={inputStyle}
+                  type={showEye ? "text" : "password"}
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <button
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-200"
+                  onClick={eyeHandler}
+                  type="button"
+                >
+                  {showEye ? <FiEye size={20} /> : <FiEyeOff size={20} />}
+                </button>
               </div>
 
-              {/* Inputs */}
-              <div className="body-font flex flex-col gap-5">
-                
-                <input 
-                  className={inputStyle} 
-                  type="email" 
-                  placeholder="Email" 
-                  value={email} 
-                  onChange={(e) => setEmail(e.target.value)} 
+              {/* Forgot Password Link */}
+              <div className="flex justify-end -mt-2">
+                <Link
+                  href="/forgot-password"
+                  className="text-white text-sm description-font hover:text-yellow-300 underline underline-offset-2 transition-colors"
+                >
+                  Forgot Password?
+                </Link>
+              </div>
+
+              {/* Turnstile */}
+              <div className="flex justify-center items-center py-1 scale-90 origin-center">
+                <Turnstile
+                  sitekey={process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY}
+                  onVerify={(token) => setCaptchaToken(token)}
                 />
+              </div>
 
-                <div className="relative">
-                  <input 
-                    className={inputStyle} 
-                    type={showEye ? "text" : "password"} 
-                    placeholder="Password" 
-                    value={password} 
-                    onChange={(e) => setPassword(e.target.value)} 
-                  />
-                  <button 
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-200" 
-                    onClick={eyeHandler}
-                    type="button"
-                  >
-                    {showEye ? <FiEye size={20} /> : <FiEyeOff size={20} />}
-                  </button>
-                </div>
+              {/* Submit Button */}
+              <div className="mt-2">
+                <button
+                  onClick={handleLogin}
+                  className={buttonStyle}
+                  disabled={isLoginLoading || !captchaToken}
+                >
+                  {isLoginLoading ? (
+                    <>
+                      <FiLoader className="animate-spin" />
+                      Logging in...
+                    </>
+                  ) : (
+                    "Login"
+                  )}
+                </button>
+              </div>
+              {/* <button
+                onClick={handleGoogleLogin}
+                disabled={isGoogleLoading}
+                className={`${buttonStyle} bg-white text-black hover:bg-gray-100`}
+              >
+                {isGoogleLoading ? (
+                  <>
+                    <FiLoader className="animate-spin" />
+                    Signing in...
+                  </>
+                ) : (
+                  <>
+                    <FcGoogle size={22} />
+                    Continue with Google
+                  </>
+                )}
+              </button> */}
 
-                {/* Forgot Password Link */}
-                <div className="flex justify-end -mt-2">
-                  <Link 
-                    href="/forgot-password" 
-                    className="text-white text-sm description-font hover:text-yellow-300 underline underline-offset-2 transition-colors"
-                  >
-                    Forgot Password?
-                  </Link>
-                </div>
+              <button
+                onClick={handleGoogleLogin}
+                disabled={isGoogleLoading}
+                className="w-full h-12 bg-white text-gray-800 text-lg font-bold body-font rounded-xl border-2 border-black hover:bg-gray-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_3px_0_#000] active:shadow-none active:translate-y-1 flex items-center justify-center gap-3 relative"
+              >
+                {isGoogleLoading ? (
+                  <>
+                    <FiLoader className="animate-spin text-gray-500" size={18} />
+                    <span className="text-gray-600">Signing in...</span>
+                  </>
+                ) : (
+                  <>
+                    <div className="absolute left-4 flex items-center justify-center w-6 h-6">
+                      <FcGoogle size={22} />
+                    </div>
+                    <span>Continue with Google</span>
+                  </>
+                )}
+              </button>
 
-                {/* Turnstile */}
-                <div className="flex justify-center items-center py-1 scale-90 origin-center">
-                  <Turnstile 
-                    sitekey={process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY} 
-                    onVerify={(token) => setCaptchaToken(token)} 
-                  />
-                </div>
 
-                {/* Submit Button */}
-                <div className="mt-2">
-                  <button 
-                    onClick={handleLogin} 
-                    className={buttonStyle}
-                    disabled={isLoading || !captchaToken}
-                  >
-                    {isLoading ? (
-                      <>
-                        <FiLoader className="animate-spin" />
-                        Logging in...
-                      </>
-                    ) : (
-                      "Login"
-                    )}
-                  </button>
-                </div>
 
-                {/* Sign Up Link */}
+              {/* Sign Up Link
                 <div className="text-center text-white description-font mt-4 text-sm">
                   <span>Don't have an account? </span>
                   <Link href="/register" className="font-bold description-font underline ml-1 hover:text-yellow-300 transition-colors">
                     Sign Up
                   </Link>
-                </div>
+                </div> */}
 
-              </div>
             </div>
           </div>
+        </div>
       </div>
     </main>
   );
