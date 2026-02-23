@@ -2,11 +2,11 @@
 'use client';
 
 import { useEffect } from 'react';
-import { analytics } from '@/app/config/firebase';
+// import { analytics } from '@/app/config/firebase';
 
 export function ClientProviders({ children }) {
   useEffect(() => {
-    analytics; // Initialize analytics
+    // analytics; // Initialize analytics
   }, []);
 
   return <>{children}</>;
