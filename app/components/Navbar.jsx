@@ -59,7 +59,7 @@ const NavLink = ({ href, text, onClick, className = "" }) => {
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const SHOW_SPONSORS = true;
+  const SHOW_SPONSORS = false;
   const SHOW_COMBOS = false;
   const SHOW_VOTING_PHASE = true;
 	const SHOW_ALL_EVENTS = false;
