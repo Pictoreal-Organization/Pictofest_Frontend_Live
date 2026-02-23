@@ -604,7 +604,7 @@ const Login = () => {
                     <div className="absolute left-4 flex items-center justify-center w-6 h-6">
                       <FcGoogle size={22} />
                     </div>
-                    <span>Continue with Google</span>
+                    <span> Continue with Google</span>
                   </>
                 )}
               </button>
