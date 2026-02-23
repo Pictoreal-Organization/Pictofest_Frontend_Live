@@ -159,12 +159,6 @@ const Navbar = () => {
 					onClick={handleNavLinkClick}
 				/>
 				<NavLink
-					href="/workshops"
-					text="Workshops"
-					className="w-40"
-					onClick={handleNavLinkClick}
-				/>
-				<NavLink
 					href="/events"
 					text="Events"
 					className="w-40"
@@ -172,6 +166,12 @@ const Navbar = () => {
 				/>
 			</>
 			)}
+      <NavLink
+        href="/workshops"
+        text="Workshops"
+        className="w-40"
+        onClick={handleNavLinkClick}
+      />
       
       {SHOW_COMBOS && (
         <NavLink
