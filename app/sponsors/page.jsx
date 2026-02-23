@@ -42,12 +42,12 @@ const Sponsors = () => {
       imgSrc: "/img/sponsor/coffee-partner.png",
       webSrc: "https://www.campustimespune.com/",
     },
-    {
-      title: "BEVERAGE PARTNER",
-      name: "PANAAAA",
-      imgSrc: "/img/sponsor/beverage-partner.png",
-      webSrc: "https://www.instagram.com/thepizzawindoww",
-    },
+    // {
+    //   title: "BEVERAGE PARTNER",
+    //   name: "PANAAAA",
+    //   imgSrc: "/img/sponsor/beverage-partner.png",
+    //   webSrc: "https://www.instagram.com/thepizzawindoww",
+    // },
     {
       title: "MEDIA PARTNER",
       name: "PUNEKAR NEWS",
@@ -60,12 +60,12 @@ const Sponsors = () => {
       imgSrc: "/img/sponsor/youth-partner.png",
       webSrc: "https://www.campustimespune.com/",
     },
-    {
-      title: "REFRESHMENT PARTNER",
-      name: "KATRAJ DAIRY",
-      imgSrc: "/img/sponsor/refreshment-partner.png",
-      webSrc: "https://www.campustimespune.com/",
-    },
+    // {
+    //   title: "REFRESHMENT PARTNER",
+    //   name: "KATRAJ DAIRY",
+    //   imgSrc: "/img/sponsor/refreshment-partner.png",
+    //   webSrc: "https://www.campustimespune.com/",
+    // },
     {
       title: "EDUCATION PARTNER",
       name: "REGAL COMPUTERS",
