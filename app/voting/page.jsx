@@ -116,7 +116,7 @@ const Voting = () => {
     const fetchSearch = async () => {
       try {
         const res = await api.get(
-          `/entry/ticketid/${searchCode}`,
+          `/entry/ticketid/${searchCode.toUpperCase()}`,
           { signal: controller.signal }
         );
 
