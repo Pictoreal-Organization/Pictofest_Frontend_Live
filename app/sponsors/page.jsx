@@ -18,12 +18,12 @@ const Sponsors = () => {
       imgSrc: "/img/sponsor/co-sponsor.png",
       webSrc: "https://www.kingofgame.in/index.html",
     },
-    {
-      title: "SNACK PARTNER",
-      name: "GURUKRUPA BUDHANI BROS",
-      imgSrc: "/img/sponsor/snack-partner.jpg",
-      webSrc: "https://gurukrupabudhanibrothers.com/",
-    },
+    // {
+    //   title: "SNACK PARTNER",
+    //   name: "GURUKRUPA BUDHANI BROS",
+    //   imgSrc: "/img/sponsor/snack-partner.jpg",
+    //   webSrc: "https://gurukrupabudhanibrothers.com/",
+    // },
     {
       title: "FOOD PARTNER",
       name: "PIZZA BURST",
@@ -48,30 +48,30 @@ const Sponsors = () => {
     //   imgSrc: "/img/sponsor/beverage-partner.png",
     //   webSrc: "https://www.instagram.com/thepizzawindoww",
     // },
-    {
-      title: "MEDIA PARTNER",
-      name: "PUNEKAR NEWS",
-      imgSrc: "/img/sponsor/media-partner.png",
-      webSrc: "https://www.campustimespune.com/",
-    },
-    {
-      title: "YOUTH PARTNER",
-      name: "CAMPUS TIMES PUNE",
-      imgSrc: "/img/sponsor/youth-partner.png",
-      webSrc: "https://www.campustimespune.com/",
-    },
+    // {
+    //   title: "MEDIA PARTNER",
+    //   name: "PUNEKAR NEWS",
+    //   imgSrc: "/img/sponsor/media-partner.png",
+    //   webSrc: "https://www.campustimespune.com/",
+    // },
+    // {
+    //   title: "YOUTH PARTNER",
+    //   name: "CAMPUS TIMES PUNE",
+    //   imgSrc: "/img/sponsor/youth-partner.png",
+    //   webSrc: "https://www.campustimespune.com/",
+    // },
     // {
     //   title: "REFRESHMENT PARTNER",
     //   name: "KATRAJ DAIRY",
     //   imgSrc: "/img/sponsor/refreshment-partner.png",
     //   webSrc: "https://www.campustimespune.com/",
     // },
-    {
-      title: "EDUCATION PARTNER",
-      name: "REGAL COMPUTERS",
-      imgSrc: "/img/sponsor/education-partner.png",
-      webSrc: "https://www.campustimespune.com/",
-    },
+    // {
+    //   title: "EDUCATION PARTNER",
+    //   name: "REGAL COMPUTERS",
+    //   imgSrc: "/img/sponsor/education-partner.png",
+    //   webSrc: "https://www.campustimespune.com/",
+    // },
   ];
 
   useEffect(() => {
@@ -223,8 +223,8 @@ const Sponsors = () => {
                     <img
                       src={data.imgSrc}
                       alt={data.name}
-                      className="max-w-40 lg:max-w-56 max-h-30 lg:max-h-44 cursor-pointer object-contain"
-                      onClick={() => data.webSrc && window.open(data.webSrc, "_blank")}
+                      className="max-w-40 lg:max-w-56 max-h-30 lg:max-h-44 object-contain"
+                      // onClick={() => data.webSrc && window.open(data.webSrc, "_blank")}
                     />
                     <p className="text-center text-md md:text-xl sub-heading-font font-semibold max-w-50 break-words">
                       {data.name}
